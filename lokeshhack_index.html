@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+</head>
+<body>
+    <h1>Select Class and Section</h1>
+    <select id="classSelect">
+        <option value="">Select Class</option>
+        <option value="1">Class 1</option>
+        <option value="2">Class 2</option>
+    </select>
+
+    <select id="sectionSelect">
+        <option value="">Select Section</option>
+        <option value="A">Section A</option>
+        <option value="B">Section B</option>
+    </select>
+
+    <button id="submitBtn">Show Students</button>
+
+    <div id="studentList"></div>
+
+    <script src="script.js"></script>
+
+<script type="text/javascript" id="dcoder_script">const students = {
+    '1A': ['Alice', 'Bob', 'Charlie'],
+    '1B': ['David', 'Eva', 'Frank'],
+    '2A': ['Grace', 'Hannah', 'Ian'],
+    '2B': ['Jack', 'Kathy', 'Leo']
+};
+
+document.getElementById('submitBtn').addEventListener('click', function() {
+    const selectedClass = document.getElementById('classSelect').value;
+    const selectedSection = document.getElementById('sectionSelect').value;
+    const key = selectedClass + selectedSection;
+
+    const studentListDiv = document.getElementById('studentList');
+    studentListDiv.innerHTML = '';
+
+    if (students[key]) {
+        const studentNames = students[key].join(', ');
+        studentListDiv.innerHTML = `<p>Students: ${studentNames}</p>`;
+    } else {
+        studentListDiv.innerHTML = '<p>No students found.</p>';
+    }
+});
+</script></body></html>
